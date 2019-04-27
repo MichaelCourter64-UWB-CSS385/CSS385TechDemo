@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,10 +21,30 @@ public class _3rdPersonCamera : MonoBehaviour
     //     player follow point.
     Vector3 direction = new Vector3(0, 0, 0);
 
+	// Holds the time when the user began right-clicking
+	double timeSinceDown = 0.0;
+	private bool isClicking = false;
+
+	void Update() {
+		if (Input.GetMouseButtonDown(1)) {
+			isClicking = true;
+           	timeSinceDown = Time.time;
+    	}
+
+		if (Input.GetMouseButtonUp(1)) {
+		 	isClicking = false;
+		 	timeSinceDown = 0.0;
+    	}
+   }
+
     // Updates the position and rotation of the camera.
     //
     void LateUpdate()
     {
+		if (!isClicking) {
+			return;
+		}
+
         const short RATIO_ANALOG_DEGREES = 360;
 
         // The position the camera should be at in the local space of the player follow point.
