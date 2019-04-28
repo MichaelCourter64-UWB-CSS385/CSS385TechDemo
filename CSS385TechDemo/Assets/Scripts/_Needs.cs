@@ -27,6 +27,7 @@ public class _Needs : MonoBehaviour {
     // temp for storing values from the FSM Animator parameters
     int temp = 0;
 
+
     // Initializes Needs System
     // Gets a reference to this creature's FSM
     // Starts/uses InvokeReapeating for a fixed interval of calls to the
@@ -44,34 +45,48 @@ public class _Needs : MonoBehaviour {
         if (!isEating)
         {
             temp = CreatureFSM.GetInteger("Hunger");
-            temp--;
+            if (temp > (MIN - 1))
+                temp--;
             CreatureFSM.SetInteger("Hunger", temp);
         }
         if (!isRelievingSelf)
         {
             temp = CreatureFSM.GetInteger("Bladder");
-            temp--;
+            if (temp > (MIN - 1))
+                temp--;
             CreatureFSM.SetInteger("Bladder", temp);
         }
         if (!isBeingPet)
         {
             temp = CreatureFSM.GetInteger("Happiness");
-            temp--;
+            if (temp > (MIN - 1))
+                temp--;
             CreatureFSM.SetInteger("Happiness", temp);
         }
         if (!isSleeping)
         {
             temp = CreatureFSM.GetInteger("Energy");
-            temp--;
+            if (temp > (MIN - 1))
+                temp--;
             CreatureFSM.SetInteger("Energy", temp);
         }
         // Note: Makes additional energy deduction if creature is moving
         if (isWalking)
         {
             temp = CreatureFSM.GetInteger("Energy");
-            temp--;
+            if (temp > (MIN - 1))
+                temp--;
             CreatureFSM.SetInteger("Energy", temp);
         }
     }
 
+    public int GetMAX()
+    {
+        return MAX;
+    }
+
+    public int GetMIN()
+    {
+        return MIN;
+    }
 }
