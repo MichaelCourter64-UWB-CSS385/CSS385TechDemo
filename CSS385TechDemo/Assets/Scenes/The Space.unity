@@ -374,11 +374,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73d30d399995f964798b6a792d4ffba0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scrollWheelName: Mouse ScrollWheel
+  zoomSpeed: 100
   horizontalSensitivity: 0.01
   verticalSensitivity: 0.01
   upperVerticalAngleLimit: 45
-  distanceBetween: 5
-  lowerVerticalAngleLimit: -45
+  startingDistance: 5
+  lowerVerticalAngleLimit: -15
+  minDistance: 1
+  maxDistance: 5
   playerFollowPoint: {fileID: 2016927373}
 --- !u!1 &1215575489
 GameObject:
