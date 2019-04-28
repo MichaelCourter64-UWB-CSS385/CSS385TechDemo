@@ -7,48 +7,71 @@ public class _Needs : MonoBehaviour {
     [SerializeField] int MAX = 100;
     [SerializeField] int MIN = -100;
 
-    // Serial "need counters" for tracking creature's needs
-    [SerializeField] int hunger;
-    [SerializeField] int bladder;
-    [SerializeField] int happiness;
-    [SerializeField] int energy;
+    // Uncomment and use if reverting from Animator Parameters as need counters
+    //// Serial "need counters" for tracking creature's needs
+    //[SerializeField] int hunger;
+    //[SerializeField] int bladder;
+    //[SerializeField] int happiness;
+    //[SerializeField] int energy;
 
     // Booleans tracking what activity the creature is currently doing
-    bool isWalking = false;
-    bool isEating = false;
     bool isRelievingSelf = false;
-    bool isBeingPet = false;
+    bool isEating = false;
     bool isSleeping = false;
+    bool isBeingPet = false;
+    bool isWalking = false;
 
+    // Reference to the Animator object which is this creature's FSM
+    Animator CreatureFSM;
+    
+    // temp for storing values from the FSM Animator parameters
+    int temp = 0;
 
+    // Initializes Needs System
+    // Gets a reference to this creature's FSM
     // Starts/uses InvokeReapeating for a fixed interval of calls to the
-    // updateNeeds() function. (Set to occur every 15 seconds.)
+    // updateNeeds() function. (Set to occur every 30 seconds.)
+    // 
     void Start () {
-        InvokeRepeating("updateNeeds", 0.0f, 15.0f);
+        CreatureFSM = GetComponent<Animator>();
+        InvokeRepeating("updateNeeds", 0.0f, 30.0f);
 	}
 	
 	// Updates the needs counters for the creature
     void updateNeeds()
     {
+        
         if (!isEating)
         {
-            hunger--;
+            temp = CreatureFSM.GetInteger("Hunger");
+            temp--;
+            CreatureFSM.SetInteger("Hunger", temp);
         }
         if (!isRelievingSelf)
         {
-            bladder--;
+            temp = CreatureFSM.GetInteger("Bladder");
+            temp--;
+            CreatureFSM.SetInteger("Bladder", temp);
         }
         if (!isBeingPet)
         {
-            happiness--;
+            temp = CreatureFSM.GetInteger("Happiness");
+            temp--;
+            CreatureFSM.SetInteger("Happiness", temp);
         }
         if (!isSleeping)
         {
-            energy--;
+            temp = CreatureFSM.GetInteger("Energy");
+            temp--;
+            CreatureFSM.SetInteger("Energy", temp);
         }
+        // Note: Makes additional energy deduction if creature is moving
         if (isWalking)
         {
-            energy--;
+            temp = CreatureFSM.GetInteger("Energy");
+            temp--;
+            CreatureFSM.SetInteger("Energy", temp);
         }
     }
+
 }
