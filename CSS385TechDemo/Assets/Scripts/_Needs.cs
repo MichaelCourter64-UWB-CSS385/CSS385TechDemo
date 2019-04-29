@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -41,7 +41,6 @@ public class _Needs : MonoBehaviour {
 	// Updates the needs counters for the creature
     void updateNeeds()
     {
-        
         if (!isEating)
         {
             temp = CreatureFSM.GetInteger("Hunger");
@@ -89,4 +88,8 @@ public class _Needs : MonoBehaviour {
     {
         return MIN;
     }
+
+    public void petCreature() {
+		CreatureFSM.SetBool("playerOfferingPetting", true);
+	}
 }
