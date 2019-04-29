@@ -7,13 +7,6 @@ public class _Needs : MonoBehaviour {
     [SerializeField] int MAX = 100;
     [SerializeField] int MIN = -100;
 
-    // Uncomment and use if reverting from Animator Parameters as need counters
-    //// Serial "need counters" for tracking creature's needs
-    //[SerializeField] int hunger;
-    //[SerializeField] int bladder;
-    //[SerializeField] int happiness;
-    //[SerializeField] int energy;
-
     // Booleans tracking what activity the creature is currently doing
     bool isRelievingSelf = false;
     bool isEating = false;
