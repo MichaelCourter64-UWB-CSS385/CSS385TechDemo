@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -14,10 +14,10 @@ public class _Navigate : StateMachineBehaviour {
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         // Get navmesh agent
-        c_Agent = animator.transform.parent.GetComponent<NavMeshAgent>();
+        c_Agent = animator.transform.GetComponent<NavMeshAgent>();
 
         // Get current creature position
-        creaturePos = animator.transform.parent.transform.position;
+        creaturePos = animator.transform.transform.position;
 
         // Decide what to find and find it
         if (animator.GetInteger("Hunger") < -80 && !animator.GetBool("IsAtFood"))
@@ -38,7 +38,10 @@ public class _Navigate : StateMachineBehaviour {
         }
 
         // give the navmesh agent the target
-        c_Agent.destination = target.transform.position;
+        if (target != null) {
+        	Debug.Log("we have a target!");
+			c_Agent.destination = target.transform.position;
+        }
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
