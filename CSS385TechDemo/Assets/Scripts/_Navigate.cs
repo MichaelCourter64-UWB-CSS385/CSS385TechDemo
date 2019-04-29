@@ -34,7 +34,7 @@ public class _Navigate : StateMachineBehaviour {
         }
         else if (animator.GetBool("PlayerOfferingPetting") && !animator.GetBool("IsAtPlayer"))
         {
-            target = FindClosestByTag("player");
+            target = FindClosestByTag("Player");
         }
 
         // give the navmesh agent the target

@@ -17,13 +17,13 @@ AnimatorController:
   - m_Name: Energy
     m_Type: 3
     m_DefaultFloat: 0
-    m_DefaultInt: -60
+    m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
   - m_Name: Happiness
     m_Type: 3
     m_DefaultFloat: 0
-    m_DefaultInt: -20
+    m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
   - m_Name: Hunger

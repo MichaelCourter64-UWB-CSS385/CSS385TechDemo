@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-//using UnityEngine.Experimental.UIElements;
 
 public class _Needs : MonoBehaviour {
     // Serial max values for needs
@@ -30,7 +29,7 @@ public class _Needs : MonoBehaviour {
 
     void Start () {
         CreatureFSM = GetComponent<Animator>();
-        InvokeRepeating("updateNeeds", 0.0f, 30.0f);
+        InvokeRepeating("updateNeeds", 0.0f, 5f);
 	}
 	
 	// Updates the needs counters for the creature
@@ -40,7 +39,7 @@ public class _Needs : MonoBehaviour {
         {
             temp = CreatureFSM.GetInteger("Hunger");
             if (temp > (MIN - 1))
-                temp--;
+                temp-= 5;
             CreatureFSM.SetInteger("Hunger", temp);
 
             // Set slider value too
@@ -53,7 +52,7 @@ public class _Needs : MonoBehaviour {
         {
             temp = CreatureFSM.GetInteger("Bladder");
             if (temp > (MIN - 1))
-                temp--;
+                temp-= 3;
             CreatureFSM.SetInteger("Bladder", temp);
 
             // Set slider value too
@@ -66,7 +65,7 @@ public class _Needs : MonoBehaviour {
         {
             temp = CreatureFSM.GetInteger("Happiness");
             if (temp > (MIN - 1))
-                temp--;
+                temp-= 2;
             CreatureFSM.SetInteger("Happiness", temp);
 
             // Set slider value too
@@ -79,7 +78,7 @@ public class _Needs : MonoBehaviour {
         {
             temp = CreatureFSM.GetInteger("Energy");
             if (temp > (MIN - 1))
-                temp--;
+                temp-= 2;
             CreatureFSM.SetInteger("Energy", temp);
 
             // Set slider value too
@@ -109,6 +108,6 @@ public class _Needs : MonoBehaviour {
     }
 
     public void petCreature() {
-		CreatureFSM.SetBool("playerOfferingPetting", true);
+		CreatureFSM.SetBool("PlayerOfferingPetting", true);
 	}
 }
