@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+//using UnityEngine.Experimental.UIElements;
 
 public class _Needs : MonoBehaviour {
     // Serial max values for needs
@@ -25,7 +27,7 @@ public class _Needs : MonoBehaviour {
     // Gets a reference to this creature's FSM
     // Starts/uses InvokeReapeating for a fixed interval of calls to the
     // updateNeeds() function. (Set to occur every 30 seconds.)
-    // 
+
     void Start () {
         CreatureFSM = GetComponent<Animator>();
         InvokeRepeating("updateNeeds", 0.0f, 30.0f);
@@ -40,6 +42,12 @@ public class _Needs : MonoBehaviour {
             if (temp > (MIN - 1))
                 temp--;
             CreatureFSM.SetInteger("Hunger", temp);
+
+            // Set slider value too
+            if (GameObject.FindGameObjectWithTag ("hungerSlider")) {
+            	Slider hungerSlider = GameObject.FindGameObjectWithTag("hungerSlider").GetComponent<Slider>();
+            	hungerSlider.value = (float) temp;
+        	}
         }
         if (!isRelievingSelf)
         {
@@ -47,6 +55,12 @@ public class _Needs : MonoBehaviour {
             if (temp > (MIN - 1))
                 temp--;
             CreatureFSM.SetInteger("Bladder", temp);
+
+            // Set slider value too
+            if (GameObject.FindGameObjectWithTag ("bladderSlider")) {
+            	Slider bladderSlider = GameObject.FindGameObjectWithTag("bladderSlider").GetComponent<Slider>();
+            	bladderSlider.value = (float) temp;
+        	}
         }
         if (!isBeingPet)
         {
@@ -54,6 +68,12 @@ public class _Needs : MonoBehaviour {
             if (temp > (MIN - 1))
                 temp--;
             CreatureFSM.SetInteger("Happiness", temp);
+
+            // Set slider value too
+            if (GameObject.FindGameObjectWithTag ("happinessSlider")) {
+            	Slider happinessSlider = GameObject.FindGameObjectWithTag("happinessSlider").GetComponent<Slider>();
+            	happinessSlider.value = (float) temp;
+        	}
         }
         if (!isSleeping)
         {
@@ -61,6 +81,12 @@ public class _Needs : MonoBehaviour {
             if (temp > (MIN - 1))
                 temp--;
             CreatureFSM.SetInteger("Energy", temp);
+
+            // Set slider value too
+            if (GameObject.FindGameObjectWithTag ("energySlider")) {
+            	Slider energySlider = GameObject.FindGameObjectWithTag("energySlider").GetComponent<Slider>();
+            	energySlider.value = (float) temp;
+        	}
         }
         // Note: Makes additional energy deduction if creature is moving
         if (isWalking)

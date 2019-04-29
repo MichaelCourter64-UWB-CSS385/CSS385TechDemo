@@ -8,6 +8,10 @@ TagManager:
   - bed
   - relief
   - creature
+  - happinessSlider
+  - hungerSlider
+  - energySlider
+  - bladderSlider
   layers:
   - Default
   - TransparentFX

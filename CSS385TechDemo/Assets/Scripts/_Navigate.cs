@@ -39,7 +39,6 @@ public class _Navigate : StateMachineBehaviour {
 
         // give the navmesh agent the target
         if (target != null) {
-        	Debug.Log("we have a target!");
 			c_Agent.destination = target.transform.position;
         }
     }
