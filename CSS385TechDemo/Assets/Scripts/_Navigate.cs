@@ -14,10 +14,10 @@ public class _Navigate : StateMachineBehaviour {
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         // Get navmesh agent
-        c_Agent = animator.transform.GetComponent<NavMeshAgent>();
+        c_Agent = animator.GetComponent<NavMeshAgent>();
 
         // Get current creature position
-        creaturePos = animator.transform.transform.position;
+        creaturePos = animator.transform.position;
 
         // Decide what to find and find it
         if (animator.GetInteger("Hunger") < -80 && !animator.GetBool("IsAtFood"))
